@@ -10,10 +10,10 @@ const Header = (props) => {
   )
 }
 
-const Content = (prop) =>{
+const Content = (props) =>{
   return(
     <div>
-      <p>Contents of the course: {prop.content}</p>
+      <p>Contents of the course: {props.content}</p>
       <p>Length of the course:{props.time}/</p>
     </div>
   )
