@@ -1,6 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
-
 
 const Header = (props) => {
   return (
@@ -11,38 +8,46 @@ const Header = (props) => {
 }
 
 const Content = (props) =>{
-  return(
+
+
+  return (
     <div>
-      <p>Contents of the course: {props.content}</p>
-      <p>Length of the course:{props.time}/</p>
+      <p>Contents of the course: {props.parts.map(part => part.name).join(', ')}</p>
+      <p>Length of the course: {props.parts.map(part =>part.exercise).join(', ')}</p>
     </div>
   )
 }
 
 const Total = (props) => {
+  const totalExercises = props.parts.reduce((total, i) => total + i.exercise, 0);
   return(
     <div>
-      <p>Total number of exercises: {props.total}</p>
+      <p>Total number of exercises: {totalExercises}</p>
     </div>
   )
 }
 
 const App= ()=> {
-    const course = 'Half Stack application development'
-    const part1 = 'Fundamentals of React'
-    const exercise1 = 10
-    const part2 = 'Using props to pass data'
-    const exercise2 = 7
-    const part3 = 'State of a component'
-    const exercise3 = 14
-  
+    const course ={
+      name:'Half Stack application development',
+      parts:[
+      {name:'Fundamentals of React',
+        exercise:10},
+      {name:'Using props to pass data',
+      exercise:7},
+      {name:'State of a component',
+      exercise:14}
+    ]
+  }
+    
+    console.log(typeof course)
+
+
  return (
     <div>
-      <Header Header={course} />
-      <Content content={part1} time={exercise1}/>
-      <Content content={part2} time={exercise2}/>
-      <Content content={part3} time={exercise3}/>
-      <Total total={exercise1 + exercise2 + exercise3}/>
+      <Header header={course.name} />
+      <Content parts={course.parts}/>
+      <Total parts={course.parts}/> 
     </div>
   )
 }
