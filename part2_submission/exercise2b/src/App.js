@@ -33,8 +33,6 @@ const App = () => {
   }
   }
 
-
-
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value)
   }
@@ -46,7 +44,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Filter searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+      <Filter searchQuery={searchQuery} handleSearchChange={handleSearchChange}/>
       <ul>
         {filterPerson.map(person => (
           <Person key={person.id} name={person.name} phone={person.phone} />
